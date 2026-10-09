@@ -1,0 +1,16 @@
+# Configuração real: tem usuário e senha do banco e muda em cada ambiente.
+# Copie config/config.exemplo.php para config/config.php e preencha.
+config/config.php
+
+# Editores e sistema operacional
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporários e cópias de segurança
+*.bak
+*.log
+*.tmp
+*~

@@ -1,0 +1,266 @@
+/* ==========================================================================
+   Pata Feliz — página pública de agendamento
+   ========================================================================== */
+
+:root{
+  --roxo-900:#240637;
+  --roxo-700:#3E0C63;
+  --roxo-500:#5B1696;
+  --roxo-300:#A86ED6;
+  --lima:#C3F53F;
+  --tinta:#1E0A2E;
+  --cinza:#645174;
+  --areia:#F6F3FA;
+  --linha:#E7DCF1;
+  --vermelho:#C62E4E;
+  --raio:16px;
+  --sombra:0 10px 26px rgba(45,10,70,.08);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;background:var(--areia);color:var(--tinta);
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid #8FBE1F;outline-offset:3px;border-radius:6px}
+
+/* Cabeçalho --------------------------------------------------------------- */
+.topo{background:var(--roxo-700);padding:16px 20px}
+.marca{display:inline-flex;align-items:center;gap:10px}
+.marca svg{width:28px;height:28px;fill:var(--lima)}
+.marca strong{display:block;color:#fff;font-size:17px;font-weight:800;line-height:1}
+.marca small{display:block;color:#CDB4E4;font-size:8.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;margin-top:3px}
+
+/* Conteúdo ---------------------------------------------------------------- */
+.caixa{max-width:720px;margin:0 auto;padding:30px 18px 50px}
+
+.titulo{margin-bottom:26px}
+.rotulo{display:block;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--roxo-300);margin-bottom:10px}
+.titulo h1{font-size:clamp(28px,7vw,40px)}
+.titulo p{margin-top:12px;color:var(--cinza);font-size:14.5px;max-width:46ch}
+
+.alerta{
+  background:#FDECEF;border:1.5px solid #F3C3CD;color:#8E1B33;
+  border-radius:var(--raio);padding:13px 16px;font-size:14px;font-weight:600;margin-bottom:18px;
+}
+
+/* Formulário -------------------------------------------------------------- */
+.form{display:grid;gap:14px}
+.campo{display:flex;flex-direction:column;min-width:0;border:0;padding:0;margin:0}
+.campo label,.campo legend{font-size:12px;font-weight:700;color:#4E3B5E;margin-bottom:6px;padding:0}
+.campo label i,.campo legend i{font-style:normal;color:#9C86AC;font-weight:500}
+
+.campo input,.campo select,.campo textarea{
+  font-family:inherit;font-size:15px;color:var(--tinta);width:100%;
+  background:#fff;border:1.5px solid var(--linha);border-radius:14px;
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.campo input,.campo select{height:52px;padding:0 14px}
+.campo textarea{padding:12px 14px;resize:vertical;line-height:1.5}
+
+.campo select{
+  appearance:none;padding-right:40px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B1696' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:16px;
+}
+.campo select:disabled{background-color:#F3EEF8;color:#9C86AC;cursor:not-allowed}
+
+.campo input:focus,.campo select:focus,.campo textarea:focus{
+  border-color:var(--roxo-500);box-shadow:0 0 0 4px rgba(91,22,150,.12);outline:none;
+}
+.campo input::placeholder,.campo textarea::placeholder{color:#A896B6}
+
+.erro{font-size:11.5px;font-weight:700;color:var(--vermelho);margin-top:5px}
+.dica{font-size:11.5px;font-weight:600;margin-top:5px;min-height:16px}
+.dica--ok{color:#2B7A2B}
+.dica--ruim{color:var(--vermelho)}
+
+.pilulas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pilulas label{position:relative;margin:0}
+.pilulas input{position:absolute;opacity:0;width:0;height:0}
+.pilulas span{
+  display:flex;align-items:center;justify-content:center;height:52px;border-radius:14px;cursor:pointer;
+  border:1.5px solid var(--linha);background:#fff;font-size:14px;font-weight:700;color:#4E3B5E;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.pilulas input:checked + span{background:var(--roxo-500);border-color:var(--roxo-500);color:#fff}
+.pilulas input:focus-visible + span{outline:3px solid #8FBE1F;outline-offset:3px}
+
+.form__nota{margin-top:10px;font-size:12px;color:var(--cinza);text-align:center}
+
+/* Botões ------------------------------------------------------------------ */
+.botao{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:52px;padding:0 24px;border:0;border-radius:26px;cursor:pointer;
+  font-family:inherit;font-size:15px;font-weight:800;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.botao--lima{background:var(--lima);color:#1F3305;box-shadow:0 12px 26px rgba(118,160,20,.3)}
+.botao--lima:hover{transform:translateY(-2px)}
+.botao--bloco{width:100%}
+
+/* Confirmação ------------------------------------------------------------- */
+.recado-grande{
+  background:#fff;border-radius:24px;padding:36px 26px;text-align:center;box-shadow:var(--sombra);
+}
+.recado-grande__ico{width:54px;height:54px;fill:none;stroke:#2B7A2B;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px}
+.recado-grande h1{font-size:28px;margin-bottom:12px}
+.recado-grande p{color:var(--cinza);font-size:14.5px}
+.recado-grande__nota{margin-top:12px!important;font-size:13px!important}
+.recado-grande .botao{margin-top:24px}
+
+/* Rodapé ------------------------------------------------------------------ */
+.rodape{background:var(--roxo-900);color:#CBB6DF;padding:26px 20px;text-align:center;font-size:13px}
+.rodape strong{color:#fff}
+.rodape__credito{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14);font-size:12px}
+
+/* Atalho discreto para o painel: parece só o coração do rodapé.
+   Continua acessível pelo teclado e por leitor de tela (aria-label). */
+.rodape__chave{
+  display:inline-block;color:inherit;cursor:default;
+  transition:color .2s ease,transform .2s ease;
+}
+.rodape__chave:hover,.rodape__chave:focus-visible{color:var(--lima);transform:scale(1.3)}
+
+@media (min-width:620px){
+  .form{grid-template-columns:1fr 1fr}
+  .campo--largo{grid-column:1 / -1}
+}
+
+/* ==========================================================================
+   Página inicial
+   ========================================================================== */
+
+html{scroll-behavior:smooth}
+h2,h3{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin:0}
+
+/* Cabeçalho com menu ------------------------------------------------------ */
+.topo--inicio{position:sticky;top:0;z-index:20;padding:14px 20px;box-shadow:0 2px 14px rgba(36,6,55,.18)}
+.topo__interno{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.topo__nav{display:flex;align-items:center;gap:22px}
+.topo__nav > a{font-size:13.5px;font-weight:600;color:#D6BFE9;transition:color .18s ease}
+.topo__nav > a:hover{color:#fff}
+.topo__nav .botao{color:#1F3305}
+
+@media (max-width:719px){
+  .topo__nav > a:not(.botao){display:none}
+}
+
+/* Chamada principal ------------------------------------------------------- */
+.heroi{
+  background:
+    radial-gradient(900px 420px at 50% -120px, rgba(195,245,63,.16), transparent 70%),
+    linear-gradient(165deg, var(--roxo-700) 0%, var(--roxo-900) 100%);
+  color:#fff;padding:62px 18px 54px;text-align:center;
+}
+.heroi__interno{max-width:720px;margin:0 auto}
+.rotulo--claro{color:var(--lima)}
+.heroi h1{font-size:clamp(32px,8vw,52px)}
+.heroi__texto{margin-top:18px;color:#DCC9EC;font-size:15.5px;max-width:52ch;margin-left:auto;margin-right:auto}
+.heroi__texto strong{color:#fff}
+
+.heroi__acoes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+.botao__ico{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.botao--contorno{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.botao--contorno:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.botao--pequeno{min-height:40px;padding:0 18px;font-size:13.5px;border-radius:20px}
+
+.heroi__selos{
+  list-style:none;margin:40px 0 0;padding:26px 0 0;
+  border-top:1px solid rgba(255,255,255,.16);
+  display:grid;gap:20px;grid-template-columns:1fr;
+}
+.heroi__selos strong{display:block;color:#fff;font-size:14.5px;font-weight:800}
+.heroi__selos span{display:block;color:#B79BCF;font-size:12.5px;margin-top:2px}
+
+/* Seções ------------------------------------------------------------------ */
+.secao{background:#fff;padding:60px 18px}
+.secao--areia{background:var(--areia)}
+.secao__interno{max-width:1040px;margin:0 auto}
+.secao[id]{scroll-margin-top:72px}
+
+.titulo--centro{text-align:center;margin-bottom:34px}
+.titulo--centro h2{font-size:clamp(25px,5.5vw,34px)}
+.titulo--centro p{margin:12px auto 0;color:var(--cinza);font-size:14.5px;max-width:48ch}
+
+/* Cartões de serviço ------------------------------------------------------ */
+.cartoes{display:grid;gap:16px;grid-template-columns:1fr}
+
+.servico{
+  display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--linha);
+  border-radius:20px;padding:24px 22px;
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.servico:hover{border-color:var(--roxo-300);box-shadow:var(--sombra);transform:translateY(-3px)}
+.servico__ico{
+  width:46px;height:46px;padding:11px;margin-bottom:14px;border-radius:14px;
+  background:var(--roxo-700);fill:none;stroke:var(--lima);
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.servico h3{font-size:19px}
+.servico__texto{margin-top:8px;color:var(--cinza);font-size:13.5px}
+
+.etiqueta{
+  align-self:flex-start;margin-top:12px;padding:4px 11px;border-radius:999px;
+  background:#F3E8FC;color:var(--roxo-500);font-size:11px;font-weight:800;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+
+.servico__dados{display:flex;gap:26px;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--linha)}
+.servico__dados dt{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9C86AC}
+.servico__dados dd{margin:3px 0 0;font-size:16px;font-weight:800;color:var(--roxo-500)}
+
+.servico__link{
+  display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  font-size:13.5px;font-weight:800;color:var(--roxo-500);
+}
+.servico__link svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s ease}
+.servico__link:hover svg{transform:translateX(4px)}
+
+/* Como funciona ----------------------------------------------------------- */
+.passos{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:1fr;counter-reset:none}
+.passo{background:#fff;border-radius:20px;padding:26px 22px;box-shadow:var(--sombra)}
+.passo__num{
+  display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+  margin-bottom:14px;border-radius:12px;background:var(--lima);
+  color:#1F3305;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:800;
+}
+.passo h3{font-size:18px}
+.passo p{margin-top:8px;color:var(--cinza);font-size:13.5px}
+
+/* Contato ----------------------------------------------------------------- */
+.infos{display:grid;gap:16px;grid-template-columns:1fr}
+.info{background:var(--areia);border-radius:18px;padding:22px 20px}
+.info__ico{width:26px;height:26px;margin-bottom:12px;fill:none;stroke:var(--roxo-500);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.info h3{font-size:14px;letter-spacing:.02em}
+.info p{margin-top:7px;color:var(--cinza);font-size:13.5px}
+.info__link{color:var(--roxo-500);font-weight:700;border-bottom:1.5px solid rgba(91,22,150,.25)}
+.info__link:hover{border-bottom-color:var(--roxo-500)}
+
+/* Chamada final ----------------------------------------------------------- */
+.chamada{background:var(--roxo-500);color:#fff;padding:54px 18px;text-align:center}
+.chamada__interno{max-width:540px;margin:0 auto}
+.chamada h2{font-size:clamp(24px,5.5vw,32px)}
+.chamada p{margin-top:12px;color:#E2CFF2;font-size:14.5px}
+.chamada .botao{margin-top:26px}
+
+@media (min-width:560px){
+  .heroi__selos{grid-template-columns:repeat(3,1fr)}
+  .infos{grid-template-columns:1fr 1fr}
+}
+@media (min-width:760px){
+  .cartoes{grid-template-columns:1fr 1fr}
+  .passos{grid-template-columns:repeat(3,1fr)}
+  .heroi{padding:84px 18px 64px}
+  .secao{padding:76px 18px}
+}
+@media (min-width:1000px){
+  .cartoes{grid-template-columns:repeat(3,1fr)}
+  .infos{grid-template-columns:repeat(4,1fr)}
+}

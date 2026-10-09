@@ -1,0 +1,5 @@
+# Protege arquivos que não devem ser acessados pelo navegador
+<FilesMatch "\.(sql|md)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes
