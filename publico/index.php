@@ -113,6 +113,7 @@ $whatsLink = 'https://wa.me/' . LOJA_WHATSAPP . '?text='
   <!-- Chamada principal -------------------------------------------------- -->
   <section class="heroi">
     <div class="heroi__interno">
+      <div class="heroi__texto-col">
       <span class="rotulo rotulo--claro">Banho · Tosa · Hidratação</span>
       <h1>O dia de cuidado<br>que o seu pet merece</h1>
       <p class="heroi__texto">
@@ -131,6 +132,14 @@ $whatsLink = 'https://wa.me/' . LOJA_WHATSAPP . '?text='
           Falar no WhatsApp
         </a>
       </div>
+
+      </div>
+
+      <figure class="heroi__foto">
+        <img src="<?= BASE_URL ?>/assets/img/cao-banho.png"
+             alt="Cão sorrindo de touca de banho, cercado de bolhas de sabão"
+             width="760" height="589" fetchpriority="high">
+      </figure>
 
       <ul class="heroi__selos">
         <li><strong><?= e($dias) ?></strong><span><?= e($abre) ?> às <?= e($fecha) ?></span></li>

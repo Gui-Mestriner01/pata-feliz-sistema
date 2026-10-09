@@ -160,6 +160,22 @@ h2,h3{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;font-weig
   color:#fff;padding:62px 18px 54px;text-align:center;
 }
 .heroi__interno{max-width:720px;margin:0 auto}
+.heroi__texto-col{min-width:0}
+
+/* foto do pet na chamada principal */
+.heroi__foto{margin:30px 0 0;display:flex;justify-content:center}
+.heroi__foto img{
+  width:100%;max-width:330px;height:auto;display:block;
+  filter:drop-shadow(0 22px 30px rgba(0,0,0,.42));
+  animation:flutuaPet 6s ease-in-out infinite;
+}
+@keyframes flutuaPet{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .heroi__foto img{animation:none}
+}
 .rotulo--claro{color:var(--lima)}
 .heroi h1{font-size:clamp(32px,8vw,52px)}
 .heroi__texto{margin-top:18px;color:#DCC9EC;font-size:15.5px;max-width:52ch;margin-left:auto;margin-right:auto}
@@ -259,6 +275,20 @@ h2,h3{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif;font-weig
   .passos{grid-template-columns:repeat(3,1fr)}
   .heroi{padding:84px 18px 64px}
   .secao{padding:76px 18px}
+}
+@media (min-width:980px){
+  /* texto à esquerda, pet à direita */
+  .heroi{text-align:left}
+  .heroi__interno{
+    max-width:1040px;
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    column-gap:40px;align-items:center;
+  }
+  .heroi__texto{margin-left:0;margin-right:0}
+  .heroi__acoes{justify-content:flex-start}
+  .heroi__foto{margin:0;grid-column:2;grid-row:1}
+  .heroi__foto img{max-width:430px}
+  .heroi__selos{grid-column:1 / -1;text-align:left;margin-top:34px}
 }
 @media (min-width:1000px){
   .cartoes{grid-template-columns:repeat(3,1fr)}
